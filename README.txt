@@ -1,9 +1,6 @@
-วิธีใช้ (Local)
-1) แตก zip
-2) ดับเบิลคลิกเปิดไฟล์ local.html (หรือ index.html ก็ได้)
-3) กด Choose File แล้วเลือก database.xlsx
-4) พิมพ์ย่อหุ้น เช่น AOT แล้วกด Enter
-
-หมายเหตุ:
-- ใช้ไลบรารี XLSX จาก CDN (ต้องมีเน็ตตอนเปิดครั้งแรก). หากอยากใช้งานแบบออฟไลน์ 100% แจ้งได้ครับ จะทำไฟล์ที่ฝังไลบรารีให้
-- fields.json ถูกฝังในทั้ง index.html และ local.html แล้ว จึงไม่ต้อง fetch จากไฟล์ภายนอก
+Thai Stock Finder — HOSTED v2
+1) อัปโหลดไฟล์ทั้งหมด + database.xlsx ไปไว้ที่ 'ราก' ของ repo
+2) เปิด Settings → Pages → Deploy from a branch → main / (root)
+3) เปิด URL ของ GitHub Pages ได้เลย
+- index.html จะโหลด database.xlsx อัตโนมัติ (มีตัวกันแคช)
+- ถ้าโหลดไม่ได้ จะแสดงปุ่ม Choose File สำหรับผู้ดูแล
