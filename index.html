@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thai Stock Finder — HOSTED v2</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">Thai Stock Finder by Phichak Limprasutr</div>
+    <div class="note">ข้อมูลราคาหุ้นไม่ใช่แบบ real-time และจะ update หลังตลาดปิด</div>
+  </header>
+  <main class="container">
+    <section class="search-bar">
+      <label for="query" class="lbl">ชื่อย่อหุ้น:</label>
+      <input id="query" type="text" placeholder="เช่น AOT, PTT, BTS" autocomplete="off" />
+      <button id="searchBtn" type="button">ค้นหา</button>
+      <div class="picker">
+        <small id="status">กำลังโหลดฐานข้อมูล…</small>
+      </div>
+    </section>
+
+    <section id="result" class="result" style="display:none">
+      <div class="bigtitle" id="bigtitle">—</div>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="hosted.js"></script>
+</body>
+</html>
