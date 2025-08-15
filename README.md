@@ -1,2 +1,0 @@
-# TSfinder
-Thai Stock Finder
