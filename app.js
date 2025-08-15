@@ -15,7 +15,7 @@
   const norm = s => (s==null?'':String(s)).trim();
   const toNum = v => typeof v==='number'?v: (typeof v==='string'? ((n=Number(v.replace(/,/g,''))), isNaN(n)?null:n):null);
   const excelDate = n => {const ms=(n-25569)*86400*1000; const d=new Date(ms); return isNaN(d.getTime())?null:d;};
-  const dayfmt = d => ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()]+', '+String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+String(d.getFullYear()).slice(-2);
+  const dayfmt = d => ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()]+', '+String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+String(d.getFullYear());
   const symbolHeader = ()=>{for(const k of ['Stock symbol','Symbol','stock symbol','symbol','code','ticker','ชื่อย่อหุ้น']) if(HEADERS.includes(k)) return k; return HEADERS[0]||'';};
 
   function ensureUrl(s){ if(!s) return null; if(/^https?:\/\//i.test(s)) return s; if(/^www\./i.test(s)) return 'https://'+s; if(/^[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(s)) return 'https://'+s; return null; }
