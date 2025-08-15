@@ -15,7 +15,7 @@ button{padding:10px 12px;border:0;background:#00a6ff;color:#05273a;font-weight:8
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .tile{border:2px solid var(--border);border-radius:var(--radius);background:#fff;min-height:78px;padding:8px;display:flex;flex-direction:column;justify-content:center}
 .tile.section{font-weight:900;display:flex;align-items:center;justify-content:center}
-.tile .label{font-size:16px;color:#334155;font-weight:700}
+.tile .label{font-size:15px;color:#334155;font-weight:700}
 .tile .value{font-size:18px;font-weight:900}
 .value.negative{color:#d4112a}
 a{color:#0a6cff}
