@@ -5,6 +5,13 @@
   const NEG_RED = new Set(["% PriceChange", "% PriceGrowth in 3 days", "% Vol Turnover", "% Vol. growth", "%Dividend Yield", "%FF", "Asset QoQ% Diff", "EBITDA (M.Bht)", "Equity (M.Bht)", "Equity QoQ% Diff", "Financing Cash Flow (M.Baht)", "IPO price (Bht)", "Investing Cash Flow (M.Baht)", "Last (Bht)", "Liabilities QoQ% Diff", "M.Cap (M.Bht)", "NVDR\nVolume (%Buy) since 1/6/65", "NVDR Vol.", "Net Cash Flow (M.Baht)", "Open (Bht)", "Operating Cash Flow (M.Baht)", "P/BV", "P/E", "Prev. Last (Bht)", "Price Spread", "Price Spread change warning", "Profit or Loss in (M.Bht) Last Q", "Securities Pledged in Margin Accounts\n(Vol.)", "TurnoverRatio(%)", "Value (‘000 Bht)", "Volume"]);
   
   
+const POS_GREEN = new Set([
+  "Profit or Loss in (M.Bht) Last Q",
+  "Profit or Loss in (MB) Last Q",
+  "% PriceGrowth in 3 days",
+  "% PriceChange"
+]);
+
   const statusEl = document.getElementById('status');
   const query  = document.getElementById('query');
   const btn    = document.getElementById('searchBtn');
@@ -20,6 +27,11 @@
   const symbolHeader = ()=>{for(const k of ['Stock symbol','Symbol','stock symbol','symbol','code','ticker','ชื่อย่อหุ้น']) if(HEADERS.includes(k)) return k; return HEADERS[0]||'';};
 
   function ensureUrl(s){ if(!s) return null; if(/^https?:\/\//i.test(s)) return s; if(/^www\./i.test(s)) return 'https://'+s; if(/^[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(s)) return 'https://'+s; return null; }
+const clsFor = (label, n) =>
+  (n < 0 && NEG_RED.has(label)) ? 'negative' :
+  (n > 0 && POS_GREEN.has(label)) ? 'positive' : '';
+
+
 
   function format(label, raw){
     if (label.toLowerCase()==='start date'){
@@ -33,10 +45,10 @@
     const n = toNum(raw);
     if (d!=null){
       if (n==null) return {text: norm(raw)||'-'};
-      const cls = (NEG_RED.has(label) && n<0) ? 'negative' : '';
+      const cls = clsFor(label, n);
       return {text: new Intl.NumberFormat('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}).format(n), cls};
     }
-    if (n!=null) return {text: new Intl.NumberFormat('en-US').format(n), cls: (NEG_RED.has(label)&&n<0)?'negative':''};
+    if (n!=null) return {text: new Intl.NumberFormat('en-US').format(n), cls: clsFor(label, n)};
     return {text: (raw==null||String(raw).trim()==='')?'-':String(raw)};
   }
 
